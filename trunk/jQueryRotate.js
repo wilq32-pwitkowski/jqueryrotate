@@ -201,13 +201,18 @@ Wilq32.PhotoEffect.prototype._Loader=
 		
 		this._vimage = this.createVMLNode('image');
 		this._vimage._ref=this;
-		this._vimage.style.height=height;
-		this._vimage.style.width=width;
-		this._vimage.style.position="relative";
+		this._vimage.style.height=height+"px";
+		this._vimage.style.width=width+"px";
+		this._temp.style.position="relative"; // FIXES IE PROBLEM
+		this._vimage.style.position="absolute"; // FIXES IE PROBLEM - its only rendered if its on absolute position!
+		this._vimage.style.top = (this._img._heightMax-height)/2;
+		this._vimage.style.left = (this._img._widthMax-width)/2;
+		
 		this._temp.style.display="inline-block";
-		this._temp.style.width=this._temp.style.height=this._img._heightMax;
+		this._temp.style.width=this._temp.style.height=this._img._heightMax+"px";
 		this._vimage.src=src;
 		this._temp.appendChild(this._vimage);
+		//this._vimage.outerHTML = this._vimage.outerHTML;
 		
 		var self = this;
 		if (this._parameters.bind) 
@@ -292,8 +297,8 @@ Wilq32.PhotoEffect.prototype._rotate = (function()
 	{
 		this._vimage.style.rotation=angle;
 		var radians=angle*Math.PI/180;
-		this._vimage.style.top=  (this._img._heightMax - this._img.height)/2- (this._vimage.offsetHeight-this._img.height)/2 +"px";
-		this._vimage.style.left= (this._img._widthMax - this._img.width)/2- (this._vimage.offsetWidth-this._img.width)/2 +"px";
+		//this._vimage.style.top=  (this._img._heightMax - this._img.height)/2- (this._vimage.offsetHeight-this._img.height)/2 +"px";
+		//this._vimage.style.left= (this._img._widthMax - this._img.width)/2- (this._vimage.offsetWidth-this._img.width)/2 +"px";
 	}
 	else
 	return function(angle)
