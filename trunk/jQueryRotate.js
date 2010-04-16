@@ -1,4 +1,4 @@
-// VERSION: 1.0 LAST UPDATE: 15.04.2010
+// VERSION: 1.1 LAST UPDATE: 16.04.2010
 /*
  * THIS IS FREE SCRIPT BUT LEAVE THIS COMMENT IF
  * YOU WANT USE THIS CODE ON YOUR SITE
@@ -19,23 +19,6 @@ Notices:
 
 Include script after including main jQuery. Whole plugin uses jQuery
 namespace and should be compatible with older version (unchecked). 
-To use it in IE you need those two lines to be added after <body> tag:
-
- 
-
-<!-- Include the VML behavior -->
-<style>v\: * { behavior:url(#default#VML); display:inline-block }</style>
-<!-- Declare the VML namespace -->
-<xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v" />
- 
-
-If someone know working workaround for doing this only in javascript please
-let me know. Right now i tried using createStyleSheets but IE doesnt recognise
- "v\: *". Adding namespace with document.namespace.add is also messy. If
- someone know this problem and a solution just please let me know.
-
-
-
 
 Usage:
 
@@ -180,6 +163,25 @@ Wilq32.PhotoEffect=function(img,parameters)
 			if (jQuery.browser.msie) if (this._img.complete) this._Loader();
 }
 
+if (jQuery.browser.msie)
+{
+Wilq32.PhotoEffect.prototype.createVMLNode=(function(){
+document.createStyleSheet().addRule(".rvml", "behavior:url(#default#VML)");
+        try {
+            !document.namespaces.rvml && document.namespaces.add("rvml", "urn:schemas-microsoft-com:vml");
+            return function (tagName) {
+                return document.createElement('<rvml:' + tagName + ' class="rvml">');
+            };
+        } catch (e) {
+            return function (tagName) {
+                return document.createElement('<' + tagName + ' xmlns="urn:schemas-microsoft.com:vml" class="rvml">');
+            };
+        }
+		
+})();
+}
+
+
 Wilq32.PhotoEffect.prototype._Loader=
 (function()
 {
@@ -197,7 +199,7 @@ Wilq32.PhotoEffect.prototype._Loader=
 		this._img._widthMax=this._img._heightMax=Math.sqrt((height)*(height) + (width) * (width));
 		this._img._heightMax=Math.sqrt((height)*(height) + (width) * (width));
 		
-		this._vimage = document.createElement('v:image');
+		this._vimage = this.createVMLNode('image');
 		this._vimage._ref=this;
 		this._vimage.style.height=height;
 		this._vimage.style.width=width;
@@ -324,14 +326,3 @@ Wilq32.PhotoEffect.prototype._rotate = (function()
 
 })();
 })(jQuery);
-
- // STILL DONT WORK ON IE8...
- /*
-if (jQuery.browser.msie)
-{
-  document.createStyleSheet().addRule('v\\:image', "behavior: url (#default#VML);display:inline-block"); 
-  document.namespaces.add('v', 'urn:schemas-microsoft-com:vml'); 
-  if(document.documentMode && document.documentMode>=8) { 
-	document.writeln('<?import namespace="v" implementation="#default#VML" ?>'); 
-  }
-}*/
