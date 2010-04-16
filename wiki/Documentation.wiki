@@ -1,0 +1,6 @@
+#summary Example and documentation
+#labels Featured
+
+Please go there to read more about this plugin:
+
+http://wilq32.adobeair.pl/jQueryRotate/Wilq32.jQueryRotate.html 
