@@ -158,7 +158,7 @@ Wilq32.PhotoEffect=function(img,parameters)
 			{
 				this._ref._Loader.call(this._ref);
 			});
-			if (jQuery.browser.msie) if (this._img.complete) this._Loader();
+			if (this._img.complete) this._Loader();
 }
 
 if (jQuery.browser.msie)
