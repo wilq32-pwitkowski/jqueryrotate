@@ -1,9 +1,10 @@
-// VERSION: 1.1 LAST UPDATE: 16.04.2010
+// VERSION: 1.2 LAST UPDATE: 17.04.2010
 /*
  * THIS IS FREE SCRIPT BUT LEAVE THIS COMMENT IF
  * YOU WANT USE THIS CODE ON YOUR SITE
  * 
  * Made by Wilq32, wilq32@gmail.com, Wroclaw, Poland, 01.2009
+ * http://wilq32.blogspot.com
  * 
  */
 /*
@@ -137,7 +138,7 @@ Wilq32={};
 
 Wilq32.PhotoEffect=function(img,parameters)
 {
-			this._IEfix=img;
+			this._img=img;
 			this._parameters=parameters;
 			this._parameters.className=img.className;
 			this._parameters.id=img.getAttribute('id');
@@ -151,10 +152,7 @@ Wilq32.PhotoEffect=function(img,parameters)
 				{
 					PhotoEffect: this
 				};			
-			var image=img.src;
 			img.parentNode.insertBefore(this._temp,img);
-			this._img= new Image();
-			this._img.src=image;
 			this._img._ref=this;
 			jQuery(this._img).bind("load", function()
 			{
@@ -188,14 +186,14 @@ Wilq32.PhotoEffect.prototype._Loader=
 	if (jQuery.browser.msie)
 	return function()
 	{
-		var src=this._IEfix.src;
-		this._IEfix.src=""; // Fixes endless loading
-		this._IEfix.parentNode.removeChild(this._IEfix);
+		var src=this._img.src;
+		//this._IEfix.src=""; // Fixes endless loading
 		this._temp.setAttribute('id',this._parameters.id);
 		this._temp.className=this._parameters.className;
 		var width=this._img.width;
 		var height=this._img.height;
-		
+		this._img.parentNode.removeChild(this._img);
+			
 		this._img._widthMax=this._img._heightMax=Math.sqrt((height)*(height) + (width) * (width));
 		this._img._heightMax=Math.sqrt((height)*(height) + (width) * (width));
 		
@@ -227,12 +225,11 @@ Wilq32.PhotoEffect.prototype._Loader=
 	else
 	return function ()
 	{
-		this._IEfix.parentNode.removeChild(this._IEfix);
 		this._temp.setAttribute('id',this._parameters.id);
 		this._temp.className=this._parameters.className;
 		var width=this._img.width;
 		var height=this._img.height;
-		
+		this._img.parentNode.removeChild(this._img);	
 		this._img._widthMax=this._img._heightMax=Math.sqrt((height)*(height) + (width) * (width));
 
 		this._canvas=document.createElement('canvas');
