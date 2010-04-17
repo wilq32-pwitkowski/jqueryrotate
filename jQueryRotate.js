@@ -154,11 +154,15 @@ Wilq32.PhotoEffect=function(img,parameters)
 				};			
 			img.parentNode.insertBefore(this._temp,img);
 			this._img._ref=this;
-			jQuery(this._img).bind("load", function()
-			{
-				this._ref._Loader.call(this._ref);
-			});
-			if (this._img.complete) this._Loader();
+			if (this._img.complete) {
+				this._Loader();
+			}
+			else{
+				jQuery(this._img).bind("load", function()
+				{
+					this._ref._Loader.call(this._ref);
+				});
+			}
 }
 
 if (jQuery.browser.msie)
