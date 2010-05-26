@@ -1,4 +1,4 @@
-// VERSION: 1.2 LAST UPDATE: 17.04.2010
+// VERSION: 1.3 LAST UPDATE: 26.05.2010
 /*
  * THIS IS FREE SCRIPT BUT LEAVE THIS COMMENT IF
  * YOU WANT USE THIS CODE ON YOUR SITE
@@ -38,6 +38,7 @@ instance to help connect events with actually created 'rotation' element.
 Parameters:
 
     ({angle:angleValue,
+	 [preservePosition:preservePositionBoolean],
      [animateAngle:animateAngleValue],
      [maxAngle:maxAngleValue],
      [minAngle:minAngleValue],
@@ -49,11 +50,13 @@ jQuery(imgElement).rotateAnimation
 Where:
 
 - angleValue - clockwise rotation given in degrees,
+- [preservePositionBoolean] (boolean) - optional parameter, preserves an image position instead of 
+								 increasing size for bounding box
 - [animateAngleValue] - optional parameter, animate rotating into this value,
 - [maxAngleValue] - optional parameter, maximum angle possible for animation,
 - [minAngleValue] - optional parameter, minimum angle possible for animation,
 - [callbackFunction] - optional function to run after animation is done
-- [animatedGifBoolean] - optional set to display animated gif in firefox/chrome/safari
+- [animatedGifBoolean](boolean)  - optional set to display animated gif in firefox/chrome/safari
             !!! this might slow down browser because it need to render image again and
 			again to display animation,
 - [bind: [ {event: function}...] -optional parameter, list of events binded
@@ -148,6 +151,7 @@ Wilq32.PhotoEffect=function(img,parameters)
 			this._angle=0;
 			if (!parameters.angle) this._parameters.angle=0;
 			this._temp=document.createElement('span');
+			this._temp.style.display="inline-block";
 			this._temp.Wilq32 = 
 				{
 					PhotoEffect: this
@@ -207,14 +211,20 @@ Wilq32.PhotoEffect.prototype._Loader=
 		this._vimage.style.width=width+"px";
 		this._temp.style.position="relative"; // FIXES IE PROBLEM
 		this._vimage.style.position="absolute"; // FIXES IE PROBLEM - its only rendered if its on absolute position!
-		this._vimage.style.top = (this._img._heightMax-height)/2;
-		this._vimage.style.left = (this._img._widthMax-width)/2;
 		
-		this._temp.style.display="inline-block";
 		this._temp.style.width=this._temp.style.height=this._img._heightMax+"px";
 		this._vimage.src=src;
 		this._temp.appendChild(this._vimage);
 		//this._vimage.outerHTML = this._vimage.outerHTML;
+		if (this._parameters.preservePosition){
+			this._temp.style.width=width+"px";
+			this._temp.style.height=height+"px";
+			this._vimage.style.top = "0px";
+			this._vimage.style.left = "0px";
+		} else {
+			this._vimage.style.top = (this._img._heightMax-height)/2;
+			this._vimage.style.left = (this._img._widthMax-width)/2;
+		}
 		
 		var self = this;
 		if (this._parameters.bind) 
@@ -243,9 +253,15 @@ Wilq32.PhotoEffect.prototype._Loader=
 
 		this._canvas.setAttribute('width',width);
 
-		this._canvas.Wilq32 = this._temp.Wilq32;
-		
+		this._canvas.Wilq32 = this._temp.Wilq32;	
 		this._temp.appendChild(this._canvas);
+		if (this._parameters.preservePosition){
+			this._temp.style.width=width+"px";
+			this._temp.style.height=height+"px";
+			this._canvas.style.position="relative";
+			this._canvas.style.left = -(this._img._widthMax - width)/2 + "px";
+			this._canvas.style.top = -(this._img._widthMax - height)/2 + "px";
+		}
 
 		var self = this;
 		if (this._parameters.bind) 
