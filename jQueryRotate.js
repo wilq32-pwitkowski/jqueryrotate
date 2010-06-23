@@ -1,4 +1,4 @@
-// VERSION: 1.3 LAST UPDATE: 26.05.2010
+// VERSION: 1.4 LAST UPDATE: 23.06.2010
 /*
  * THIS IS FREE SCRIPT BUT LEAVE THIS COMMENT IF
  * YOU WANT USE THIS CODE ON YOUR SITE
@@ -38,7 +38,6 @@ instance to help connect events with actually created 'rotation' element.
 Parameters:
 
     ({angle:angleValue,
-	 [preservePosition:preservePositionBoolean],
      [animateAngle:animateAngleValue],
      [maxAngle:maxAngleValue],
      [minAngle:minAngleValue],
@@ -50,8 +49,6 @@ jQuery(imgElement).rotateAnimation
 Where:
 
 - angleValue - clockwise rotation given in degrees,
-- [preservePositionBoolean] (boolean) - optional parameter, preserves an image position instead of 
-								 increasing size for bounding box
 - [animateAngleValue] - optional parameter, animate rotating into this value,
 - [maxAngleValue] - optional parameter, maximum angle possible for animation,
 - [minAngleValue] - optional parameter, minimum angle possible for animation,
@@ -87,6 +84,8 @@ Examples:
 */
 
 (function($) {
+var supportedCSS,styles=document.getElementsByTagName("head")[0].style,toCheck="transformProperty WebkitTransform OTransform".split(" "); //MozTransform <- firefox works slower with css!!!
+for (var a=0;a<toCheck.length;a++) if (styles[toCheck[a]] !== undefined) supportedCSS = toCheck[a];
 
 jQuery.fn.extend({
 ImageRotate:function(parameters)
@@ -139,35 +138,51 @@ rotateAnimation:function(parameters)
 
 Wilq32={};
 
-Wilq32.PhotoEffect=function(img,parameters)
-{
-			this._img=img;
-			this._parameters=parameters;
-			this._parameters.className=img.className;
-			this._parameters.id=img.getAttribute('id');
-			this._parameters.animateAngle=0;
-			
-			if (!parameters) this._parameters={};
-			this._angle=0;
-			if (!parameters.angle) this._parameters.angle=0;
-			this._temp=document.createElement('span');
-			this._temp.style.display="inline-block";
-			this._temp.Wilq32 = 
-				{
-					PhotoEffect: this
-				};			
-			img.parentNode.insertBefore(this._temp,img);
-			this._img._ref=this;
-			if (this._img.complete) {
-				this._Loader();
-			}
-			else{
-				jQuery(this._img).bind("load", function()
-				{
-					this._ref._Loader.call(this._ref);
-				});
-			}
-}
+Wilq32.PhotoEffect=(function(){
+	if (supportedCSS) 
+	return function(img,parameters){
+		this._img = img;
+		this._parameters = parameters || {};
+		this._parameters.animateAngle = 0;
+		this._parameters.angle = parameters.angle || 0;
+		this._angle=0;
+		img.Wilq32 = {
+			PhotoEffect: this
+		};
+		this._BindEvents(this._img,this._parameters.bind);
+		this._rotate(this._parameters.angle);
+	}
+	
+	else 
+	return function(img,parameters)
+	{
+				this._img=img;
+				this._parameters=parameters || {};
+				this._parameters.className=img.className;
+				this._parameters.id=img.getAttribute('id');
+				this._parameters.animateAngle=0;
+				
+				this._angle=0;
+				this._parameters.angle=parameters.angle || 0;
+				this._temp=document.createElement('span');
+				this._temp.style.display="inline-block";
+				this._temp.Wilq32 = 
+					{
+						PhotoEffect: this
+					};			
+				img.parentNode.insertBefore(this._temp,img);
+				this._img._ref=this;
+				if (this._img.complete) {
+					this._Loader();
+				}
+				else{
+					jQuery(this._img).bind("load", function()
+					{
+						this._ref._Loader.call(this._ref);
+					});
+				}
+	}
+})();
 
 if (jQuery.browser.msie)
 {
@@ -187,6 +202,14 @@ document.createStyleSheet().addRule(".rvml", "behavior:url(#default#VML)");
 })();
 }
 
+Wilq32.PhotoEffect.prototype._BindEvents=function(element,events){
+	if (events) 
+	{
+		for (var a in events) if (events.hasOwnProperty(a)) 
+			for (var b in events[a]) if (events[a].hasOwnProperty(b)) 
+				jQuery(element).bind(b,events[a][b]);
+	}
+}
 
 Wilq32.PhotoEffect.prototype._Loader=
 (function()
@@ -216,23 +239,18 @@ Wilq32.PhotoEffect.prototype._Loader=
 		this._vimage.src=src;
 		this._temp.appendChild(this._vimage);
 		//this._vimage.outerHTML = this._vimage.outerHTML;
-		if (this._parameters.preservePosition){
+		//if (this._parameters.preservePosition){
 			this._temp.style.width=width+"px";
 			this._temp.style.height=height+"px";
 			this._vimage.style.top = "0px";
 			this._vimage.style.left = "0px";
-		} else {
+		/*} else {
 			this._vimage.style.top = (this._img._heightMax-height)/2;
 			this._vimage.style.left = (this._img._widthMax-width)/2;
-		}
+		}*/
 		
 		var self = this;
-		if (this._parameters.bind) 
-		{
-			for (var a in this._parameters.bind) if (this._parameters.bind.hasOwnProperty(a)) 
-			for (var b in this._parameters.bind[a]) if (this._parameters.bind[a].hasOwnProperty(b)) 
-			jQuery(this._temp).bind(b,this._parameters.bind[a][b]);
-		}
+		this._BindEvents(this._temp,this._parameters.bind);
 		this._rotate(this._parameters.angle);		
 		
 	}
@@ -255,21 +273,16 @@ Wilq32.PhotoEffect.prototype._Loader=
 
 		this._canvas.Wilq32 = this._temp.Wilq32;	
 		this._temp.appendChild(this._canvas);
-		if (this._parameters.preservePosition){
+		//if (this._parameters.preservePosition){
 			this._temp.style.width=width+"px";
 			this._temp.style.height=height+"px";
 			this._canvas.style.position="relative";
 			this._canvas.style.left = -(this._img._widthMax - width)/2 + "px";
 			this._canvas.style.top = -(this._img._widthMax - height)/2 + "px";
-		}
+		//}
 
 		var self = this;
-		if (this._parameters.bind) 
-		{
-			for (var a in this._parameters.bind) if (this._parameters.bind.hasOwnProperty(a)) 
-			for (var b in this._parameters.bind[a]) if (this._parameters.bind[a].hasOwnProperty(b)) 
-			jQuery(this._canvas).bind(b,this._parameters.bind[a][b]);
-		}
+		this._BindEvents(this._canvas,this._parameters.bind);
 		this._cnv=this._canvas.getContext('2d');
 		this._rotate(this._parameters.angle);
 	}
@@ -278,16 +291,18 @@ Wilq32.PhotoEffect.prototype._Loader=
 
 Wilq32.PhotoEffect.prototype._animateStart=function()
 {	
-	if (this._timer) clearTimeout(this._timer);
+	if (this._timer) {
+		clearTimeout(this._timer);
+	}
 	this._animate();
 }
 Wilq32.PhotoEffect.prototype._animate=function()
-{	
-	if (this._canvas||this._vimage) this._angle-=(this._angle-this._parameters.animateAngle)*0.1;
+{
+	if (this._canvas||this._vimage||this._img) this._angle-=(this._angle-this._parameters.animateAngle)*0.1;
 	if (typeof this._parameters.minAngle!="undefined") if (this._angle<this._parameters.minAngle) this._angle=this._parameters.minAngle;
 	if (typeof this._parameters.maxAngle!="undefined") if (this._angle>this._parameters.maxAngle) this._angle=this._parameters.maxAngle; 
+	var checkEnd = !!(Math.round(this._angle * 100 - this._parameters.animateAngle * 100)) == 0 && !!this._timer;
 
-	var checkEnd = !!Math.round(this._angle * 100 - this._parameters.animateAngle * 100) == 0 && !!this._timer;
 	if (this._parameters.callback && checkEnd){
 		this._parameters.callback();
 	}
@@ -298,7 +313,7 @@ Wilq32.PhotoEffect.prototype._animate=function()
 		}
 		else 
 		{
-			if (this._canvas||this._vimage) this._rotate(this._angle);
+			if (this._canvas||this._vimage||this._img) this._rotate((~~(this._angle*10))/10);
 			var self = this;
 			this._timer = setTimeout(function()
 			{
@@ -313,11 +328,15 @@ Wilq32.PhotoEffect.prototype._rotate = (function()
 	return function(angle)
 	{
 		this._vimage.style.rotation=angle;
-		var radians=angle*Math.PI/180;
+		//var radians=angle*Math.PI/180;
 		//this._vimage.style.top=  (this._img._heightMax - this._img.height)/2- (this._vimage.offsetHeight-this._img.height)/2 +"px";
 		//this._vimage.style.left= (this._img._widthMax - this._img.width)/2- (this._vimage.offsetWidth-this._img.width)/2 +"px";
 	}
-	else
+	else if (supportedCSS)
+	return function(angle){
+		this._img.style[supportedCSS]="rotate("+angle+"deg)";
+	}
+	else 
 	return function(angle)
 
 	{
