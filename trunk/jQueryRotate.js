@@ -1,4 +1,4 @@
-// VERSION: 1.6 LAST UPDATE: 21.08.2010
+// VERSION: 1.7 LAST UPDATE: 16.12.2010
 /*
  * THIS IS FREE SCRIPT BUT LEAVE THIS COMMENT IF
  * YOU WANT USE THIS CODE ON YOUR SITE
@@ -39,8 +39,10 @@ Parameters:
 
     ({angle:angleValue,
      [animateAngle:animateAngleValue],
-     [maxAngle:maxAngleValue],
-     [minAngle:minAngleValue],
+	 [easing:easingFunction],
+	 [duration:durationValue],
+     !!! DEPRECATED !!!    [maxAngle:maxAngleValue],
+     !!! DEPRECATED !!!    [minAngle:minAngleValue],
      [callback:callbackFunction],
 	 [animatedGif:animatedGifBoolean],
      [bind:[{event: function},{event:function} ] })
@@ -50,8 +52,11 @@ Where:
 
 - angleValue - clockwise rotation given in degrees,
 - [animateAngleValue] - optional parameter, animate rotating into this value,
-- [maxAngleValue] - optional parameter, maximum angle possible for animation,
-- [minAngleValue] - optional parameter, minimum angle possible for animation,
+- [easing] - optional parameter, function to control animation speed - supports native easing
+             function and a jquery easing plugin, default: easeOutQuart
+- [duration] - optional parameter, duration of a animation - default 1000ms 
+- [maxAngleValue] - !!! DEPRECATED !!!    optional parameter, maximum angle possible for animation,
+- [minAngleValue] - !!! DEPRECATED !!!    optional parameter, minimum angle possible for animation,
 - [callbackFunction] - optional function to run after animation is done
 - [animatedGifBoolean](boolean)  - optional set to display animated gif in firefox/chrome/safari
             !!! this might slow down browser because it need to render image again and
@@ -73,7 +78,8 @@ Examples:
 
 		$(document).ready(function()
 		{
-			var rot=$('#image3').rotate({maxAngle:25,minAngle:-55,
+			var rot=$('#image3').rotate({maxAngle:25,minAngle:-55, duration:570,
+			easing:$.easing.easeInOutExpo,
 			bind:
 				[
 					{"mouseover":function(){rot[0].rotateAnimation(85);}},
@@ -84,9 +90,11 @@ Examples:
 */
 
 (function($) {
-var supportedCSS,styles=document.getElementsByTagName("head")[0].style,toCheck="transformProperty WebkitTransform OTransform".split(" "); //MozTransform <- firefox works slower with css!!!
+var supportedCSS,styles=document.getElementsByTagName("head")[0].style,toCheck="transformProperty WebkitTransform OTransform msTransform".split(" "); //MozTransform <- firefox works slower with css!!!
 for (var a=0;a<toCheck.length;a++) if (styles[toCheck[a]] !== undefined) supportedCSS = toCheck[a];
-var IE = "v"=="\v";
+// Bad eval to preven google closure to remove it from code o_O
+// After compresion replace it back to var IE = 'v' == '\v'
+var IE = eval('"v"=="\v"');
 
 jQuery.fn.extend({
 ImageRotate:function(parameters)
@@ -144,7 +152,8 @@ Wilq32.PhotoEffect=(function(){
 		this._parameters = parameters || {};
 		this._parameters.angle = this._angle = parameters.angle || 0;
 		this._parameters.animateAngle = typeof parameters.animateAngle=="number" ? parameters.animateAngle : this._angle;
-		
+		this._parameters.easing = parameters.easing || function (x, t, b, c, d) { return -c * ((t=t/d-1)*t*t*t - 1) + b; }
+		this._parameters.duration = parameters.duration || 1000;
 	}
 	if (supportedCSS) {
 		return function(img,parameters){
@@ -193,7 +202,7 @@ Wilq32.PhotoEffect.prototype={
 
 	rotateAnimation : function(parameters){
 		this._parameters.animateAngle = parameters.animateAngle;
-		this._parameters.callback = parameters.callback || this._parameters.callback || function(){};
+		this._parameters.callback = parameters.callback || this._parameters.callback || function(){};	
 		this._animateStart();
 	},
 
@@ -262,8 +271,10 @@ Wilq32.PhotoEffect.prototype={
 			this._heightAddHalf=this._heightAdd/2;// used for optimisation
 			
 			this._img.parentNode.removeChild(this._img);	
-
-
+			
+			this._aspectW = ((parseInt(this._img.style.width,10)) || this._width)/this._img.width;
+			this._aspectH = ((parseInt(this._img.style.height,10)) || this._height)/this._img.height;
+			
 			this._canvas=document.createElement('canvas');
 			this._canvas.setAttribute('width',this._width);
 			this._canvas.style.position="relative";
@@ -291,12 +302,15 @@ Wilq32.PhotoEffect.prototype={
 		if (this._timer) {
 			clearTimeout(this._timer);
 		}
+		this._animateStartTime = +new Date;
+		this._animateStartAngle = this._angle;
 		this._animate();
 	},
 	_animate:function()
 	{
-		var checkEnd = !!(Math.round(this._angle * 100 - this._parameters.animateAngle * 100)) == 0 && !!this._timer;
-
+		var actualTime = +new Date;
+		//var checkEnd = !!(Math.round(this._angle * 100 - this._parameters.animateAngle * 100)) == 0 && !!this._timer;
+		var checkEnd = actualTime - this._animateStartTime > this._parameters.duration;
 		if (this._parameters.callback && checkEnd){
 			this._parameters.callback();
 		}
@@ -310,9 +324,10 @@ Wilq32.PhotoEffect.prototype={
 			{
 				if (this._canvas||this._vimage||this._img) {
 					// TODO: implement easing and speed of animation
-					this._angle-=(this._angle-this._parameters.animateAngle)*0.1;
-					if (typeof this._parameters.minAngle!="undefined") this._angle=Math.max(this._angle,this._parameters.minAngle);
-					if (typeof this._parameters.maxAngle!="undefined") this._angle=Math.min(this._angle,this._parameters.maxAngle);
+					this._angle = this._parameters.easing(0, actualTime - this._animateStartTime, this._animateStartAngle, this._parameters.animateAngle - this._animateStartAngle, this._parameters.duration);
+					//this._angle-=(this._angle-this._parameters.animateAngle)*0.1;
+					//if (typeof this._parameters.minAngle!="undefined") this._angle=Math.max(this._angle,this._parameters.minAngle);
+					//if (typeof this._parameters.maxAngle!="undefined") this._angle=Math.min(this._angle,this._parameters.maxAngle);
 					this._rotate((~~(this._angle*10))/10);
 				}
 				var self = this;
@@ -344,15 +359,13 @@ Wilq32.PhotoEffect.prototype={
 			// clear canvas	
 			this._canvas.width = this._width+this._widthAdd;
 			this._canvas.height = this._height+this._heightAdd;
-			
-			//TODO: Implement scaling for fixed image size
-			//this._cnv.scale(0.8,0.8); // SCALE - if needed ;)
-			
+						
 			// REMEMBER: all drawings are read from backwards.. so first function is translate, then rotate, then translate, translate..
 			this._cnv.translate(this._widthAddHalf,this._heightAddHalf);	// at least center image on screen
 			this._cnv.translate(this._widthHalf,this._heightHalf);			// we move image back to its orginal 
 			this._cnv.rotate(angle);										// rotate image
 			this._cnv.translate(-this._widthHalf,-this._heightHalf);		// move image to its center, so we can rotate around its center
+			this._cnv.scale(this._aspectW,this._aspectH); // SCALE - if needed ;)
 			this._cnv.drawImage(this._img, 0, 0);							// First - we draw image
 		}
 
