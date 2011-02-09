@@ -1,13 +1,11 @@
 // VERSION: 1.7 LAST UPDATE: 16.12.2010
-/*
- * THIS IS FREE SCRIPT BUT LEAVE THIS COMMENT IF
- * YOU WANT USE THIS CODE ON YOUR SITE
+/* 
+ * Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
  * 
  * Made by Wilq32, wilq32@gmail.com, Wroclaw, Poland, 01.2009
- * http://wilq32.blogspot.com
- * 
+ * Website: http://code.google.com/p/jqueryrotate/ 
  */
-(function(f){for(var g,k=document.getElementsByTagName("head")[0].style,i="transformProperty WebkitTransform OTransform msTransform".split(" "),h=0;h<i.length;h++)if(k[i[h]]!==undefined)g=i[h];var j='v'==='\v';jQuery.fn.extend({ImageRotate:function(b){if(!(this.Wilq32&&this.Wilq32.PhotoEffect)){b=f.extend(true,{},b);return(new Wilq32.PhotoEffect(this.get(0),b))._temp}},rotate:function(b){if(!(this.length===0||typeof b=="undefined")){if(typeof b=="number")b={angle:b};for(var a=[],c=0,e=
+/function(f){for(var g,k=document.getElementsByTagName("head")[0].style,i="transformProperty WebkitTransform OTransform msTransform".split(" "),h=0;h<i.length;h++)if(k[i[h]]!==undefined)g=i[h];var j='v'==='\v';jQuery.fn.extend({ImageRotate:function(b){if(!(this.Wilq32&&this.Wilq32.PhotoEffect)){b=f.extend(true,{},b);return(new Wilq32.PhotoEffect(this.get(0),b))._temp}},rotate:function(b){if(!(this.length===0||typeof b=="undefined")){if(typeof b=="number")b={angle:b};for(var a=[],c=0,e=
 this.length;c<e;c++){var d=this.get(c);typeof d.Wilq32=="undefined"?a.push(f(f(d).ImageRotate(b))):d.Wilq32.PhotoEffect._rotate(b.angle)}return a}},rotateAnimation:function(b){if(!(this.length===0||typeof b=="undefined")){if(typeof b=="number")b={animateAngle:b};for(var a=[],c=0,e=this.length;c<e;c++){var d=this.get(c);typeof d.Wilq32=="undefined"?a.push(f(f(d).ImageRotate(b))):d.Wilq32.PhotoEffect.rotateAnimation(b)}return a}}});Wilq32=window.Wilq32||{};Wilq32.PhotoEffect=function(){function b(a,
 c){this._img=a;this._parameters=c||{};this._parameters.angle=this._angle=c.angle||0;this._parameters.animateAngle=typeof c.animateAngle=="number"?c.animateAngle:this._angle;this._parameters.easing=c.easing||function(e,d,l,m,n){return-m*((d=d/n-1)*d*d*d-1)+l};this._parameters.duration=c.duration||1E3}return g?function(a,c){b.call(this,a,c);a.Wilq32={PhotoEffect:this};this._temp=this._img;this._BindEvents(a,this._parameters.bind);this._rotate(this._parameters.angle);this._parameters.angle!=this._parameters.animateAngle&&
 this.rotateAnimation(this._parameters)}:function(a,c){b.call(this,a,c);this._parameters.className=a.className;this._parameters.id=a.getAttribute("id");this._temp=document.createElement("span");this._temp.style.display="inline-block";this._temp.Wilq32={PhotoEffect:this};a.parentNode.insertBefore(this._temp,a);if(a.complete)this._Loader();else{var e=this;jQuery(this._img).bind("load",function(){e._Loader()})}}}();Wilq32.PhotoEffect.prototype={rotateAnimation:function(b){this._parameters.animateAngle=
