@@ -1,11 +1,9 @@
 // VERSION: 1.7 LAST UPDATE: 16.12.2010
-/*
- * THIS IS FREE SCRIPT BUT LEAVE THIS COMMENT IF
- * YOU WANT USE THIS CODE ON YOUR SITE
+/* 
+ * Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
  * 
  * Made by Wilq32, wilq32@gmail.com, Wroclaw, Poland, 01.2009
- * http://wilq32.blogspot.com
- * 
+ * Website: http://code.google.com/p/jqueryrotate/ 
  */
 /*
 Description:
