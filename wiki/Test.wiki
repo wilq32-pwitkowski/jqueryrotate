@@ -1,1 +1,1 @@
-<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="500" height="500" border="0" up_image="http://gimnazjumradlow.pl/images/test.gif"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="500" height="500" border="0" up_image="http://gimnazjumradlow.pl/images/test.gif" up_func="{angle:0, animateAngle:125}"/>
