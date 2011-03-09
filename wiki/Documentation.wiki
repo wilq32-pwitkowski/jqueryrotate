@@ -1,6 +1,130 @@
-#summary Example and documentation
 #labels Featured
+= rotate(angle) =
 
-Please go there to read more about this plugin:
+ == angle ==
+ `[Number]` - default 0 - Simply rotates given image by a given angle
 
-http://wilq32.adobeair.pl/jQueryRotate/Wilq32.jQueryRotate.html 
+ Example:
+ {{{ 
+   $("#img").rotate(45);
+ }}}
+
+ <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{angle:45}"/>
+
+= rotate(parameters) =
+
+== parameters ==
+ `[Object]` Object containing parameters for rotation. Supported attributes:
+
+      * === angle===
+ <p>
+  `[Number]` - default 0 - Angle value in degrees of  an rotation to be executed immediately
+
+    Example:
+{{{
+$("#img").rotate({angle:45});
+}}}
+  <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{angle:45}"/>
+
+ </p>
+
+      * === bind ===
+ <p>
+  `[Object]` Object containing events to bound on a rotation object. $(this) inside events points to a rotation object - this way you can chain execution of rotations - $(this).rotate(...)
+
+    Example (click on arrow):
+{{{
+$("#img").rotate({bind:{
+      click: function(){
+          $(this).rotate({
+            angle: 0, 
+            animateTo:180
+          })
+      }
+  }
+});
+}}}
+  <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{click:function(){  $(this).rotate({angle: 0, animateTo:180})}}}"/>
+
+ </p>
+
+      * === animateTo ===
+ <p>
+  `[Number]` - default 0 - Angle value in degrees of  an rotation to be animated to from current angle value (or given angle parameter)
+
+    Example:
+  See <i> angle </i> example.
+
+ </p>
+
+
+
+      * === duration===
+ <p>
+  `[Number]` - default 1000 - Specifies a duration of a animation when using animateTo action
+
+    Example (click on arrow):
+{{{
+$("#img").rotate({bind:{
+      click: function(){
+          $(this).rotate({
+            duration:6000,
+            angle: 0, 
+            animateTo:100
+          })
+      }
+  }
+});
+}}}
+  <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{click:function(){  $(this).rotate({angle: 0, duration: 6000, animateTo:180})}}}"/>
+ </p>
+
+
+
+      * === easing===
+ <p>
+  `[Function]` - default (see below) - Easing function used to make animation look more natural. It takes five parameters (x,t,b,c,d) to support easing from http://gsgd.co.uk/sandbox/jquery/easing/ (for more details please see documentation at their website). Remember to include easing plugin before using it in jQueryRotate!
+
+   Default function:
+{{{
+   function (x, t, b, c, d) { return -c * ((t=t/d-1)*t*t*t - 1) + b; }
+}}}
+
+    Example (click on arrow):
+{{{
+$("#img").rotate({bind:{
+      click: function(){
+          $(this).rotate({
+            angle: 0, 
+            animateTo:180,
+            easing: $.easing.easeInOutElastic
+          })
+      }
+  }
+});
+}}}
+  <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{click:function(){  $(this).rotate({angle: 0, animateTo:180,easing:$.easing.easeInOutElastic})}}}"/>
+ </p>
+
+
+
+      * === callback ===
+ <p>
+  `[Function]` A function to be called when animation finishes.
+
+    Example (click on arrow):
+{{{
+$("#img").rotate({bind:{
+      click: function(){
+          $(this).rotate({
+            angle: 0, 
+            animateTo:180,
+            callback: function(){   alert(1)  }
+          })
+      }
+  }
+});
+}}}
+  <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{click:function(){  $(this).rotate({angle: 0, animateTo:180,callback:function(){alert(1)}})}}}"/>
+
+ </p>
