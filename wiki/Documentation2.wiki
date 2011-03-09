@@ -1,4 +1,4 @@
-<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:[ { mouseover:function(){$(this).rotateAnimation(180)}},{mouseout:function(){ $(this).rotateAnimation(0)}} ]}"/>
+
 
 {{{
 
