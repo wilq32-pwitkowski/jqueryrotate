@@ -7,26 +7,24 @@
 
    * no more rotateAnimation function! Now instead of typing rotateAnimation(10) you simply write rotate({animateTo:10}), this clears alot with different usages as 'angle' parameter always directly changes rotation and 'animateTo' always triggers animate rotation from current angle (or given angle),
 
-before:
-
-{{{
+ before:
+ {{{
   $("#image").rotateAnimation(360);
-}}}
-or
-{{{
+ }}}
+ or
+ {{{
   $("#image").rotateAnimation({animateAngle:360});
-}}}
-now:
-{{{
-$("#image").rotate({animateTo:360});
-}}}
-NOTE! There is now no option to animate using only a integer (you have to use an object with animateTo option at least)
+ }}}
+ now:
+ {{{
+   $("#image").rotate({animateTo:360});
+ }}}
+ NOTE! There is now no option to animate using only a integer (you have to use an object with animateTo option at least)
 
    * binding function now does not require an array, just an object with hash (previous concept was... just stupid):
 
-before:
-{{{
-
+ before:
+ {{{
   $("#image").rotate({ angle: 10, bind: [
       {
         "click":function(){}
@@ -35,18 +33,16 @@ before:
         "mouseover":function(){}
       }
   ] })
-
-}}}
-now:
-
-{{{
+ }}}
+ now:
+ {{{
   $("#image").rotate({ angle: 10, bind:
       {
         "click":function(){},
         "mouseover":function(){}
       }
     })
-}}}
+ }}}
 
  ===Other changes===
 
