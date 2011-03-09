@@ -26,8 +26,7 @@ $("#img").rotate({
      { 
         mouseover : function() { 
             $(this).rotate({animateTo:180})
-        }
-     ,
+        },
         mouseout : function() { 
             $(this).rotate({animateTo:0})
         }
@@ -50,9 +49,7 @@ setInterval(function(){
 },50);
 }}}
 
-= Example 4 = 
-
-Rotate image endlessly using easing
+Rotate image endlessly using recursive function
 
 <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(document.body.lastChild.previousSibling).rotate({angle:0, animateTo:360,callback: rotation}); };rotation();  return {}})()"/>
 
@@ -60,7 +57,7 @@ Rotate image endlessly using easing
 {{{
 
 var rotation = function (){
-   $("#img").rotateAnimation({
+   $("#img").rotate({
       angle:0, 
       animateAngle:360, 
       callback: rotation
@@ -68,4 +65,26 @@ var rotation = function (){
 }
 rotation();
 
+}}}
+
+
+Rotate image endlessly using recursive function and custom easing (similar to example with simple endless rotation)
+
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(document.body.lastChild.previousSibling).rotate({angle:0, animateTo:360,callback: rotation, easing:function(x,t,b,c,d){ return c+d*t} }); };rotation();  return {}})()"/>
+
+
+
+{{{
+
+var rotation = function (){
+   $("#img").rotate({
+      angle:0, 
+      animateAngle:360, 
+      callback: rotation,
+      easing: function (x,t,b,c,d){        // t: current time, b: begInnIng value, c: change In value, d: duration
+          return c+d*t;
+      }
+   });
+}
+rotation();
 }}}
