@@ -59,7 +59,7 @@ setInterval(function(){
 
 Rotate image endlessly using easing
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(document.body.lastChild.previousSibling).rotateAnimation({angle:0,animateAngle:360,callback: rotation})}; rotation(); return 0})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(document.body.lastChild.previousSibling).rotate(120); }; rotation(); return 0})()"/>
 
 
 {{{
