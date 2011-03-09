@@ -42,3 +42,21 @@ setInterval(function(){
      $("#img").rotate(angle);
 },50);
 }}}
+
+= Example 4 = 
+
+Rotate image endlessly using easing
+
+{{{
+
+var rotation = function (){
+   $("#img").rotateAnimation({
+      angle:0, 
+      animateAngle:360, 
+      callback: rotation
+   });
+}
+rotation();
+
+
+}}}
