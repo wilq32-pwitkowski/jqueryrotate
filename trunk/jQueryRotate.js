@@ -84,9 +84,10 @@ Wilq32.PhotoEffect=(function(){
 
 Wilq32.PhotoEffect.prototype={
     _setupParameters : function (parameters){
-		this._parameters = this._parameters || {_angle:0, animateTo:0};
+		this._parameters = this._parameters || {};
+        if (typeof this._angle !== "number") this._angle = 0 ;
         if (typeof parameters.angle==="number") this._angle = parameters.angle;
-        this._parameters.animateTo = (typeof parameters.animateTo==="number") ? parameters.animateTo : this._angle; 
+        this._parameters.animateTo = (typeof parameters.animateTo==="number") ? (parameters.animateTo) : (this._angle); 
 
 		this._parameters.easing = parameters.easing || this._parameters.easing || function (x, t, b, c, d) { return -c * ((t=t/d-1)*t*t*t - 1) + b; }
 		this._parameters.duration = parameters.duration || this._parameters.duration || 1000;
