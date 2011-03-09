@@ -25,7 +25,7 @@ This is simple example that rotates image when user mouseover/mouseout object.
 
 {{{
 
-$("#img").rotateAnimation({    // note that in this line rotate will also work as we does not start animation directly
+$("#img").rotateAnimation({    // note that in this line .rotate({ will also work as we does not start animation directly
    bind: [ 
      { 
         mouseover : function() { 
