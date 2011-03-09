@@ -6,17 +6,18 @@ Simply rotate an image
 $("#img").rotate(45);
 }}}
 
-or
+  or
 
 {{{
 $("#img").rotate({angle:45});
 }}}
 
-or
+  or
 
 = Example 2 =
 This is simple example that rotates image when user mouseover/mouseout object.
 
+   Mouseover arrow to see effect.
 <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ mouseover:function(){$(this).rotate({animateTo:180})},mouseout:function(){ $(this).rotate({animateTo:0})}} }"/>
 
 {{{
@@ -87,4 +88,28 @@ var rotation = function (){
    });
 }
 rotation();
+}}}
+
+
+
+= Example 4 =
+Animation rotate using easing from http://gsgd.co.uk/sandbox/jquery/easing/
+
+(remember to also include `<script>` contains easing)
+
+  Click on arrow to see effect.
+
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ click:function(){ $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })} } }"/>
+
+{{{
+
+$("#img").rotate({ 
+   bind: 
+     { 
+        click: function(){
+            $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })
+        }
+     } 
+   
+});
 }}}
