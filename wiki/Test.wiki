@@ -1,0 +1,1 @@
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/adv_gadged.xml" width="728" height="90" border="0" />
