@@ -1,3 +1,4 @@
+#labels Featured
 = Example 1 =
 Simply rotate an image
 <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{angle:45}"/>
@@ -16,20 +17,19 @@ or
 = Example 2 =
 This is simple example that rotates image when user mouseover/mouseout object.
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ mouseover:function(){$(this).rotateAnimation(180)},mouseout:function(){ $(this).rotateAnimation(0)}} }"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ mouseover:function(){$(this).rotate({animateTo:180})},mouseout:function(){ $(this).rotate({animateTo:0})}} }"/>
 
 {{{
 
-$("#img").rotateAnimation({    // note that in this line .rotate({ will also work as we does not start animation directly
+$("#img").rotate({ 
    bind: 
      { 
         mouseover : function() { 
-            $(this).rotateAnimation(180)
+            $(this).rotate({animateTo:180})
         }
      ,
-      
         mouseout : function() { 
-            $(this).rotateAnimation(0)
+            $(this).rotate({animateTo:0})
         }
      } 
    
@@ -52,9 +52,9 @@ setInterval(function(){
 
 = Example 4 = 
 
-Rotate image endlessly using easing (Work in progress O_o)
+Rotate image endlessly using easing
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var angle=0,rotation = function (){angle-=360;$(document.body.lastChild.previousSibling).rotateAnimation({animateAngle:angle,callback: rotation}); };rotation();  return {}})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(document.body.lastChild.previousSibling).rotate({angle:0, animateTo:360,callback: rotation}); };rotation();  return {}})()"/>
 
 
 {{{
