@@ -13,31 +13,26 @@ $("#img").rotate({angle:45});
 
 or
 
-{{{
-$("#img").rotateAnimation({angle:45}); // Note that this does not trigger animation!
-}}}
-
-
 = Example 2 =
 This is simple example that rotates image when user mouseover/mouseout object.
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:[ { mouseover:function(){$(this).rotateAnimation(180)}},{mouseout:function(){ $(this).rotateAnimation(0)}} ]}"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ mouseover:function(){$(this).rotateAnimation(180)},mouseout:function(){ $(this).rotateAnimation(0)}} }"/>
 
 {{{
 
 $("#img").rotateAnimation({    // note that in this line .rotate({ will also work as we does not start animation directly
-   bind: [ 
+   bind: 
      { 
         mouseover : function() { 
             $(this).rotateAnimation(180)
         }
-     },
-     { 
+     ,
+      
         mouseout : function() { 
             $(this).rotateAnimation(0)
         }
      } 
-   ]
+   
 });
 }}}
 
