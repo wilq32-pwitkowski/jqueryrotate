@@ -128,3 +128,6 @@ $("#img").rotate({bind:{
   <wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{click:function(){  $(this).rotate({angle: 0, animateTo:180,callback:function(){alert(1)}})}}}"/>
 
  </p>
+
+
+If you're interested in more examples please go here: [Examples]
