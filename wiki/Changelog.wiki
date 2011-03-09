@@ -1,0 +1,49 @@
+#labels Featured
+
+ ==version 1.7:==
+ * added Easing and Duration to animations,
+ * fixed aspect ration for images that got different height,
+ * added support for a Internet Explorer new msTransform attribute for CSS rotation
+
+ ==version 1.6:==
+ * refactored and reviewed code (teft some TODO's), removed lot of unused code,
+ * increased performance for firefox,
+ * hopefully fixed IE problem with positioning (1px difference that is visible especially for very small images),
+ * fixed problem when setting an angle and it animates to angle 0 (instead of staying in place)
+ * compressed size down from 7kb to 5kb,
+
+ ==version 1.5:==
+ * fixed problem with setting animateAngle on first rotation
+ * fixed problem with animating image immediately on document ready
+
+ ==version 1.4:==
+ * Added css rotation for supported browsers (except firefox that runs slower than on canvas and IE - slower too),
+ * By adding css rotation - fixed bug with new Chrome and Safari that does not clears whole space when animate,
+ * dropped support for "preservePosition" -> from now on canvas will always have same height and width as image,
+ * minor style code changes,
+
+ ==version 1.3:==
+ * Added "preservePosition" attribute to make rotated images appear in the same position as they would be normal images.
+
+ ==version 1.2:==
+ * Endless loading problem (second issue) finally fixed!.
+
+ ==version 1.1:==
+ * Finally fixed setting v:image and namespacing for IE - now you dont need to do anything more than just including script on page!.
+
+ ==version 1.0:==
+ * Fixed endless loading problem for IE and fixed a reference for 'this' in binding functions. Now $(this) in binding function refers to an object that you can rotate again.
+
+ ==version < 1:==
+ * Fixed problem for a jQuery namespacing (Thanks to Régis Gaillard) and fixed issue with using same parameters globally for all items.
+ * Added a support for animated gifs, now you can specify if you want to support them. Notice that this might slow down a bit other things on page because it needs to render images all the time. Use it if you really need it.
+ * Fixed bug with IE introduced by last version
+ * Fixed problem of document.ready animations for images
+ * Fixed annoying bug in IE 8 in creation of elements
+ * Whole new concept for IE - instead of using canvas itself - right now function uses a nice workaround using vml:image to rotate it faster. All of you involved please do some test with this!.
+ * Repaired some small bug - now you can rotate all elements like $(".images").
+ * Solved some problems with calling rotation again on the same object, now $("#element").rotate(angle) and .rotateAnimation(angle) and everything related returns proper reference to newly created object.
+ * Added callback functionality
+ * Repaired bug with IE
+ * Repaired bug with some statical rotating problem,
+ * Main relase,
