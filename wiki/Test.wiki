@@ -1,1 +1,1 @@
-<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="500" height="500" border="0" up_image="http://gimnazjumradlow.pl/images/test.gif" up_func="{bind:[ { mouseover:function(){$(this).rotateAnimation(45)}},{mouseout:function(){ $(this).rotateAnimation(0)}} ]}"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/rotate.xml" width="100" height="100" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:[ { mouseover:function(){$(this).rotateAnimation(180)}},{mouseout:function(){ $(this).rotateAnimation(0)}} ]}"/>
