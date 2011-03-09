@@ -5,6 +5,18 @@ Simply rotate an image
 $("#img").rotate(45);
 }}}
 
+or
+
+{{{
+$("#img").rotate({angle:45});
+}}}
+
+or
+
+{{{
+$("#img").rotateAnimation({angle:45}); // Note that this does not trigger animation!
+}}}
+
 
 = Example 2 =
 This is simple example that rotates image when user mouseover/mouseout object.
