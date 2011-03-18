@@ -1,5 +1,6 @@
 =Who uses plugin (Other examples)=
 
+* MihaStudio - http://mihastudio.com/collection.php
  * AJAX LABS - clock: http://www.ajaxlabs.co.uk/default.php?eid=0006  
  * minecraft-sundial: https://github.com/sunkid/minecraft-sundial
  * http://aahhimalaya.com/the_place.html
