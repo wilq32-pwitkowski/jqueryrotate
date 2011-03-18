@@ -135,3 +135,4 @@ $("#img").rotate({bind:{
 
 
 If you're interested in more examples please go here: [Examples]
+<wiki:gadget url="http://jqueryrotate.googlecode.com/files/adv_gadged2.xml" width="728" height="18" border="0" />
