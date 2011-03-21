@@ -15,6 +15,7 @@
             },500);
 
         </script>
+        <iframe src = "http://google.com"></iframe>
             ]]>
         </Content> 
     </Module>
