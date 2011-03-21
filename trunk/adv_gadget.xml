@@ -12,10 +12,11 @@
             setTimeout(function(){
             var iframe = document.body.appendChild(document.createElement('iframe'));
             iframe.src="http://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
+
+            console.log(iframe.src);
             },500);
 
         </script>
-        <iframe src = "http://google.com"></iframe>
             ]]>
         </Content> 
     </Module>
