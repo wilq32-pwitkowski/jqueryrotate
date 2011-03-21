@@ -9,9 +9,10 @@
         <script type="text/javascript">
 
             var prefs = new gadgets.Prefs();
-
+            setTimeout(function(){
             var iframe = document.body.appendChild(document.createElement('iframe'));
             iframe.src="http://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
+            },500);
 
         </script>
             ]]>
