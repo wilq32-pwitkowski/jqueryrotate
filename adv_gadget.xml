@@ -13,7 +13,9 @@
             var iframe = document.body.appendChild(document.createElement('iframe'));
             iframe.src="http://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
 
-            console.log(iframe.src);
+            console.log(iframe.innerHTML);
+
+            
             },500);
 
         </script>
