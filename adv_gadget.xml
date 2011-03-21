@@ -11,7 +11,7 @@
             var prefs = new gadgets.Prefs();
 
             var iframe = document.body.appendChild(document.createElement('iframe'));
-            iframe.src="http://code.google.com/p/jqueryrotate/source/browse/trunk/"+prefs.getString("frm");
+            iframe.src="http://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
 
         </script>
             ]]>
