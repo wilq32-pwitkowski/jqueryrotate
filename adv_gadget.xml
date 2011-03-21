@@ -10,8 +10,9 @@
 
             var prefs = new gadgets.Prefs();
             setTimeout(function(){
-            var iframe = document.body.appendChild(document.createElement('iframe'));
-            iframe.src="http://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
+            var iframe = document.body.appendChild(document.createElement('div'));
+            iframe.innerHTML = "<iframe> </iframe>";
+            iframe.firstChild.src="http://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
 
             console.log(iframe.innerHTML);
 
