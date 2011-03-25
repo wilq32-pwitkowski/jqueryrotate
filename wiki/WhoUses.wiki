@@ -1,5 +1,7 @@
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="110" border="0" up_frm="adv1.html"/>
 
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="50" border="0" up_frm="adv2.html"/>
+
 =Who uses plugin (Other examples)=
 
  * MihaStudio - http://mihastudio.com/collection.php
