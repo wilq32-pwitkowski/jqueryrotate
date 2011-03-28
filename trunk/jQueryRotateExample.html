@@ -1,7 +1,7 @@
 <html>
     <head>
         <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'></script>
-        <script type='text/javascript' src='jQueryRotateCompressed.js'></script>
+        <script type='text/javascript' src='jQueryRotate.js'></script>
 		<script type='text/javascript' src='http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js'></script>
         <script type='text/javascript'>
 /*$(document).ready(function() {
@@ -11,17 +11,17 @@
 
         $(document).ready(function()
                 {            
-//$('.image').rotate(-5);				
-				var rot=$('.image').rotate({//angle:15, easing: $.easing.easeInOutExpo, duration: 5000,
+//$('#tst').rotate(-5);				
+				/*var rot=$('.image').rotate({//angle:15, easing: $.easing.easeInOutExpo, duration: 5000,
                     bind:{
                                 "mouseover":function(){ $(this).rotate({animateTo:85});},
                                 "mouseout":function(){$(this).rotate({animateTo:-35});}
                                 }});
                 
                 $("#test").parent("div").find("#test").rotate({animateTo: -360, bind: { "click": function() { $(this).rotate({angle:0, animateTo:-360}); } } });
-
+*/
                 var func = function(){
-                $("#test2").rotate({angle:0, animateTo:360,callback : func});
+                $("#tst").rotate({angle:0, animateTo:360,callback : func});
                 }
                 func();
                 
