@@ -1,4 +1,8 @@
 #labels Featured
+=version 2.1=
+
+ * Uncommented support for firefox MozTransform as new version of firefox seems to handle it with better performance.
+
 =version 2.0=
  
  Because of huge change of API I've introduced new version series of jQueryRotate.
