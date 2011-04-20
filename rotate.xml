@@ -15,7 +15,7 @@
             $(document.body).append("<img src='"+prefs.getString("image")+"'>");
             var img = document.getElementsByTagName('img')[0];
                 eval("var obj = "+prefs.getString("func"));
-                img.rotate(obj);
+                $(img).rotate(obj);
 
         </script>
         ]]>
