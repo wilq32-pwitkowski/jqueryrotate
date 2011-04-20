@@ -44,7 +44,7 @@ $("#img").rotate({
 
 Rotate image endlessly
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ angle = 50; setInterval(function(){angle+=3;$(document.body.lastChild.previousSibling).rotate(angle)  },50); return 0})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ angle = 50; setInterval(function(){angle+=3;$(img).rotate(angle)  },50); return 0})()"/>
 
 {{{
 var angle = 0;
@@ -56,7 +56,7 @@ setInterval(function(){
 
 Rotate image endlessly using recursive function
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(document.body.lastChild.previousSibling).rotate({angle:0, animateTo:360,callback: rotation}); };rotation();  return {}})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(img).rotate({angle:0, animateTo:360,callback: rotation}); };rotation();  return {}})()"/>
 
 
 {{{
@@ -75,7 +75,7 @@ rotation();
 
 Rotate image endlessly using recursive function and custom easing (similar to example with simple endless rotation)
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(document.body.lastChild.previousSibling).rotate({angle:0, animateTo:360,callback: rotation, easing:function(x,t,b,c,d){ return c*(t/d)+b} }); };rotation();  return {}})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(img).rotate({angle:0, animateTo:360,callback: rotation, easing:function(x,t,b,c,d){ return c*(t/d)+b} }); };rotation();  return {}})()"/>
 
 
 
