@@ -13,7 +13,7 @@
             var prefs = new gadgets.Prefs();
 
             function getImg() {
-            img = $("#img");
+            img = $($("div").get(0).firstChild);
             }
 
             $(document.body).append("<div><img id='#img' src='"+prefs.getString("image")+"'></div>");
