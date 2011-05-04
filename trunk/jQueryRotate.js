@@ -127,11 +127,6 @@ Wilq32.PhotoEffect.prototype={
 		if (IE)
 		return function(parameters)
 		{
-            // Handle case where for some reason load function is called twice
-            if (this._vimage) {
-                this._handleRotation(parameters);
-                return;
-            }
 			var width=this._img.width;
 			var height=this._img.height;
 			this._img.parentNode.removeChild(this._img);

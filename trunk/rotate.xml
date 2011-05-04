@@ -12,7 +12,7 @@
 
             var prefs = new gadgets.Prefs();
 
-            $(document.body).append("<div><img src='"+prefs.getString("image")+"'></div>");
+            $(document.body).append("<div><img id="#img" src='"+prefs.getString("image")+"'></div>");
             var img = document.getElementsByTagName('img')[0];
             eval("var obj = "+prefs.getString("func"));
             $(img).rotate(obj);
