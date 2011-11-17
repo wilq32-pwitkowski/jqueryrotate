@@ -8,4 +8,5 @@
  * AJAX LABS - clock: http://www.ajaxlabs.co.uk/default.php?eid=0006  
  * minecraft-sundial: https://github.com/sunkid/minecraft-sundial
  * http://www.ijskarverhuur.net/ - move your mouse over the bell of the ice cream cart :)
+ * http://blog.curiosum.com.pl/?p=229 - rotating sliders on which balls moves
 Let me know if you find more ...
