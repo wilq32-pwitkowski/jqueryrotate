@@ -93,6 +93,19 @@ $("#img").rotate({bind:{
    function (x, t, b, c, d) { return -c * ((t=t/d-1)*t*t*t - 1) + b; }
 }}}
 
+   Where:
+   * t: current time, 
+   * b: begInnIng value,
+   * c: change In value, 
+   * d: duration,
+   * x: unused
+
+No easing (linear easing): 
+{{{
+   function(x, t, b, c, d) { return (t/d)*c ; }
+}}}
+
+
     Example (click on arrow):
 {{{
 $("#img").rotate({bind:{
