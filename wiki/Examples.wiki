@@ -16,7 +16,7 @@ $("#img").rotate(45);
 $("#img").rotate({angle:45});
 }}}
 
-  or
+See live example here: http://jsfiddle.net/RwEme/
 
 = Example 2 =
 This is simple example that rotates image when user mouseover/mouseout object.
@@ -39,6 +39,8 @@ $("#img").rotate({
    
 });
 }}}
+
+See live example here: http://jsfiddle.net/8LV3p/
 
 = Example 3 =
 
