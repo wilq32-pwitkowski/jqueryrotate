@@ -16,29 +16,47 @@ for (var a=0;a<toCheck.length;a++) if (styles[toCheck[a]] !== undefined) support
 var IE = eval('"v"=="\v"');
 
 jQuery.fn.extend({
-ImageRotate:function(parameters)
-{
-	// If this element is already a Wilq32.PhotoEffect object, skip creation
-	if (this.Wilq32&&this.Wilq32.PhotoEffect) return;
-	// parameters might be applied to many objects - so because we use them later - a fresh instance is needed 
-	var paramClone = $.extend(true, {}, parameters); 
-	return (new Wilq32.PhotoEffect(this.get(0),paramClone))._rootObj;
-},
-rotate:function(parameters)
-{
-	if (this.length===0||typeof parameters=="undefined") return;
-	if (typeof parameters=="number") parameters={angle:parameters};
-	var returned=[];
-	for (var i=0,i0=this.length;i<i0;i++)
-	{
-	    var element=this.get(i);	
-		if (typeof element.Wilq32 == "undefined") 
-			returned.push($($(element).ImageRotate(parameters)));
-		else 
-            element.Wilq32.PhotoEffect._handleRotation(parameters);
-	}
-	return returned;
-}
+    rotate:function(parameters)
+    {
+        if (this.length===0||typeof parameters=="undefined") return;
+            if (typeof parameters=="number") parameters={angle:parameters};
+        var returned=[];
+        for (var i=0,i0=this.length;i<i0;i++)
+            {
+                var element=this.get(i);	
+                if (!element.Wilq32 || !element.Wilq32.PhotoEffect) {
+
+                    var paramClone = $.extend(true, {}, parameters); 
+                    var newRotObject = new Wilq32.PhotoEffect(element,paramClone)._rootObj;
+
+                    returned.push($(newRotObject));
+                }
+                else { 
+                    element.Wilq32.PhotoEffect._handleRotation(parameters);
+                }
+            }
+            return returned;
+    },
+    getRotateAngle: function(){
+        var ret = [];
+        for (var i=0,i0=this.length;i<i0;i++)
+            {
+                var element=this.get(i);	
+                if (element.Wilq32 && element.Wilq32.PhotoEffect) {
+                    ret[i] = element.Wilq32.PhotoEffect._angle;
+                }
+            }
+            return ret;
+    },
+    stopRotate: function(){
+        for (var i=0,i0=this.length;i<i0;i++)
+            {
+                var element=this.get(i);	
+                if (element.Wilq32 && element.Wilq32.PhotoEffect) {
+                    clearTimeout(element.Wilq32.PhotoEffect._timer);
+                }
+            }
+    }
 });
 
 // Library agnostic interface
@@ -79,6 +97,7 @@ Wilq32.PhotoEffect.prototype={
         if (typeof parameters.angle==="number") this._angle = parameters.angle;
         this._parameters.animateTo = (typeof parameters.animateTo==="number") ? (parameters.animateTo) : (this._angle); 
 
+        this._parameters.step = parameters.step || this._parameters.step || null;
 		this._parameters.easing = parameters.easing || this._parameters.easing || function (x, t, b, c, d) { return -c * ((t=t/d-1)*t*t*t - 1) + b; }
 		this._parameters.duration = parameters.duration || this._parameters.duration || 1000;
         this._parameters.callback = parameters.callback || this._parameters.callback || function(){};
@@ -144,8 +163,8 @@ Wilq32.PhotoEffect.prototype={
 		this._animateStartAngle = this._angle;
 		this._animate();
 	},
-_animate:function()
-     {
+    _animate:function()
+    {
          var actualTime = +new Date;
          var checkEnd = actualTime - this._animateStartTime > this._parameters.duration;
 
@@ -159,6 +178,9 @@ _animate:function()
              if (this._canvas||this._vimage||this._img) {
                  var angle = this._parameters.easing(0, actualTime - this._animateStartTime, this._animateStartAngle, this._parameters.animateTo - this._animateStartAngle, this._parameters.duration);
                  this._rotate((~~(angle*10))/10);
+             }
+             if (this._parameters.step) {
+                this._parameters.step(this._angle);
              }
              var self = this;
              this._timer = setTimeout(function()
