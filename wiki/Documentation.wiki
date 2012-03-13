@@ -87,6 +87,7 @@ $("#img").rotate({bind:{
   `[Function]` - default null - A function that will be executed on every animation step. As a first argument a current angle is given.
 
  </p>
+
       * === easing===
  <p>
   `[Function]` - default (see below) - Easing function used to make animation look more natural. It takes five parameters (x,t,b,c,d) to support easing from http://gsgd.co.uk/sandbox/jquery/easing/ (for more details please see documentation at their website). Remember to include easing plugin before using it in jQueryRotate!
