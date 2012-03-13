@@ -11,7 +11,6 @@
 
         $(document).ready(function()
                 {            
-                    alert('done');
 //$('#tst').rotate(-5);				
 				/*var rot=$('.image').rotate({//angle:15, easing: $.easing.easeInOutExpo, duration: 5000,
                     bind:{
@@ -22,19 +21,21 @@
                 $("#test").parent("div").find("#test").rotate({animateTo: -360, bind: { "click": function() { $(this).rotate({angle:0, animateTo:-360}); } } });
 */
                 var func = function(){
-                $("#test").rotate({angle:0, animateTo:360,callback : func});
+                $("#test").rotate({angle:0, duration: 3000, animateTo:360, callback : func});
+                 setTimeout(function(){
+                     $("#test").stopRotate();
+                     $("#test").rotate({animateTo: 40});
+                     }, 1000);
                 }
                 func();
 
                 var angle = 0;
                 setInterval(function(){
-                         angle+=3;
+                    angle+=3;
                              $("#test2").rotate(angle);
                              },50); 
-
-           
-                
                 });
+
         </script>
     </head>
     <body>
