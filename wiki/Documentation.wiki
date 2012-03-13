@@ -145,6 +145,25 @@ $("#img").rotate({bind:{
 
  </p>
 
+= getRotateAngle =
+
+ This function simply returns current angle of rotated object.
+
+ Example:
+ {{{ 
+   $("#img").rotate({
+        angle: 45, 
+        bind: {
+            click : function(){
+               alert($(this).getRotateAngle());
+            }
+        }
+   });
+ }}}
+
+  <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{angle:45, bind:{click:function(){  alert($(this).getRotateAngle()) }}}"/>
+
+
 
 If you're interested in more examples please go here: [Examples]
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="35" border="0" up_frm="adv2.html"/>
