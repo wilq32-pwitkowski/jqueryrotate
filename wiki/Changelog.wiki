@@ -1,10 +1,13 @@
 #labels Featured
 =version 2.2(and 3.1 of a jQueryRotate3)=
 
-- Added getRotateAngle function that will give you current value of rotation,
-- Added stopAnimation function that will stop ongoing animation,
-- Added step parameter - a function that will be called every time a new value of animation is being computed,
-- Remove some old code (some simplification)
+ * Added getRotateAngle function that will give you current value of rotation,
+
+ * Added stopAnimation function that will stop ongoing animation,
+
+ * Added step parameter - a function that will be called every time a new value of animation is being computed,
+
+ * Remove some old code (some simplification)
 
 =version 2.1=
 
