@@ -56,7 +56,7 @@ $("#img").rotate({bind:{
   `[Number]` - default 0 - Angle value in degrees of  an rotation to be animated to from current angle value (or given angle parameter)
 
     Example:
-  See <i> angle </i> example.
+  See <i> bind </i> example above to see usage.
 
  </p>
 
