@@ -33,7 +33,7 @@ $("#img").rotate({angle:45});
 
       * === bind ===
  <p>
-  `[Object]` Object containing events to bound on a rotation object. $(this) inside events points to a rotation object - this way you can chain execution of rotations - $(this).rotate(...)
+  `[Object]` Object containing events to bind on to a rotation object. $(this) inside events points to a rotation object - this way you can chain execution of rotations - $(this).rotate(...)
 
     Example (click on arrow):
 {{{
