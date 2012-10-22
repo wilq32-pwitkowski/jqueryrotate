@@ -1,11 +1,11 @@
 #summary I will try to collect here all frequently asked questions.
 
-=== 1. I try rotate div element and it works everywhere but not in IE ===
+=== 1. I try rotate div element and it works everywhere but not in IE. ===
 
 This plugin was mainly created to rotate images (img) elements ONLY. However it uses CSS attributes in modern browsers that will also work for div elements. That's why it works in other browsers but not IE. If you really need to rotate div you can take a look at experimental version of jQueryRotate 3. You can find it here: 
 http://code.google.com/p/jqueryrotate/source/browse/#svn%2Ftrunk
 
-=== 2. In IE first time image is rotated image blinks for a while ===
+=== 2. In IE first time image is rotated image blinks for a while. ===
 
 This is a nasty outcome of a replacing a IMG element with VML:Image on the fly. If this issue is a problem for you, you can try call $(element).rotate(0) as soon as possible. Triggering any .rotate method will do the conversion, so you can prepare image object for later use. Thanks to alisonjo2786 there we got some example cases:
 
@@ -17,9 +17,9 @@ http://jsfiddle.net/CeLNw/26/
 
 Also you can take look at http://code.google.com/p/jqueryrotate/wiki/Documentation and check alisonjo2786 comment there.
 
-=== 3. This plugin doesn't work ===
+=== 3. This plugin doesn't work. ===
 
-This plugin is tested in many environments so before saying it doesn't work first check that:
+This plugin is tested in many environments so before saying it doesn't work please first check that:
   * jQuery is included and is included before jQueryRotate,
   * jQueryRotate is included and is included after jQuery,
   * javascript code should be executed after libraries are loaded. It's also safe to do:
