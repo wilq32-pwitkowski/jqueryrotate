@@ -16,3 +16,15 @@ A solution with some more nice features:
 http://jsfiddle.net/CeLNw/26/
 
 Also you can take look at http://code.google.com/p/jqueryrotate/wiki/Documentation and check alisonjo2786 comment there.
+
+=== 3. This plugin doesn't work ===
+
+This plugin is tested in many environments so before saying it doesn't work first check that:
+  * jQuery is included and is included before jQueryRotate,
+  * jQueryRotate is included and is included after jQuery,
+  * javascript code should be executed after libraries are loaded. It's also safe to do:
+{{{
+$document.ready(function(){
+   /// Your code here
+});
+}}}
