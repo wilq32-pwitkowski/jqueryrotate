@@ -1,6 +1,6 @@
 #summary I will try to collect here all frequently asked questions.
 
-= 1. I try rotate <div> element and it works everywhere but not in IE =
+= 1. I try rotate div element and it works everywhere but not in IE =
 
-This plugin was mainly created to rotate images (<img>) elements ONLY. However it uses CSS attributes in modern browsers that will also work for <div> elements. That's why it works in other browsers but not IE. If you really need to rotate <div> you can take a look at experimental version of jQueryRotate 3. You can find it here: 
+This plugin was mainly created to rotate images (img) elements ONLY. However it uses CSS attributes in modern browsers that will also work for div elements. That's why it works in other browsers but not IE. If you really need to rotate div you can take a look at experimental version of jQueryRotate 3. You can find it here: 
 http://code.google.com/p/jqueryrotate/source/browse/#svn%2Ftrunk
