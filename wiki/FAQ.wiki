@@ -28,3 +28,15 @@ $document.ready(function(){
    /// Your code here
 });
 }}}
+
+=== 4. My event get lost after calling .rotate ===
+
+Well unfortunately its true. Removing original element and replacing it with VML or Canvas leads to lost of events. Safest way of binding any events to object that you plan to rotate is:
+
+{{{
+$(element).rotate({
+   bind : {
+      /// here bind your events
+   }
+});
+}}}
