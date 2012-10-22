@@ -11,4 +11,5 @@
  * http://blog.curiosum.com.pl/?p=229 - rotating sliders on which balls moves
  * https://www.groupon.com/clicky
  * http://true-web.ch/map18/ (click on image, there on a number, then press on/off to show the scale which you can rotate).
+ * http://www.aldiphotogallery.com/en/gallery/
 Let me know if you find more ...
