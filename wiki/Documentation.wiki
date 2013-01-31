@@ -108,7 +108,7 @@ $("#img").rotate({bind:{
 
 No easing (linear easing): 
 {{{
-   function(x, t, b, c, d) { return (t/d)*c ; }
+   function(x, t, b, c, d) { return b+(t/d)*c ; }
 }}}
 
 
