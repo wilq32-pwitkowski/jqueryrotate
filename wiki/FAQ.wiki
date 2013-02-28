@@ -40,3 +40,12 @@ $(element).rotate({
    }
 });
 }}}
+
+
+=== EXTRAS ===
+== Rotate within wrapper (idea sent by Dan Helyar) ==
+When you're forced to rotate within wrapper and found out that its quite tricky problem, you can take look at Dan Helyar findings and some more comments here:
+
+http://stackoverflow.com/questions/15109483/how-can-i-maintain-a-tight-wrap-around-a-css-rotated-image
+
+And some example solution: http://jsfiddle.net/Z7VVR/8/
