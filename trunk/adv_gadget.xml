@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <Module>
     <ModulePrefs title="jQueryRotate: jQuery plugin rotating images in VML, canvas or CSS3" 
-        title_url="http://code.google.com/p/jqueryrotate/"
+        title_url="https://code.google.com/p/jqueryrotate/"
         description = "Jquery plugin that rotates images using VML, canvas or CSS3" /> 
     <UserPref name="frm" display_name="Function" />
     <Content type="html">
@@ -9,7 +9,7 @@
         <script type="text/javascript">
 
             var prefs = new gadgets.Prefs();
-            window.location="http://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
+            window.location="https://jqueryrotate.googlecode.com/svn/trunk/"+prefs.getString("frm");
 
         </script>
             ]]>
