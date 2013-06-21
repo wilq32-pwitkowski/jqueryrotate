@@ -1,6 +1,8 @@
 #summary Explanation for all supported parameters and methods
 #labels Featured
 
+<wiki:gadget url="https://jqueryrotate.googlecode.com/svn/trunk/adsense_gadget.xml" width="0" height="0" border="0"/>
+
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="35" border="0" up_frm="adv2.html"/>
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="110" border="0" up_frm="adv1.html"/>
 
