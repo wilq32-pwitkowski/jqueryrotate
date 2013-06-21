@@ -1,3 +1,5 @@
+<wiki:gadget url="https://jqueryrotate.googlecode.com/svn/trunk/adsense_gadget.xml" width="0" height="0" border="0"/>
+
 #summary I will try to collect here all frequently asked questions.
 
 === 1. I try rotate div element and it works everywhere but not in IE. ===
