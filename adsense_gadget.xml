@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+    <ModulePrefs title="jQueryRotate: jQuery plugin rotating images in VML, canvas or CSS3" 
+        title_url="https://code.google.com/p/jqueryrotate/"
+        description = "Jquery plugin that rotates images using VML, canvas or CSS3" /> 
+    <UserPref name="frm" display_name="Function" />
+    <Content type="html">
+      <![CDATA[ 
+        <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41913465-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+            ]]>
+        </Content> 
+    </Module>
