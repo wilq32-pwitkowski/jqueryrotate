@@ -64,7 +64,26 @@ $("#img").rotate({bind:{
 
  </p>
 
+      * === center ===
+ <p>
+  `[Array]` - An array containing two values - [X, Y]. They define a center of a rotation. Numeric and percentage values are possible ([100,100], or ["50%", "50%"]). Default value is ["50%", "50%"].
 
+    Example (click on arrow):
+{{{
+$("#img").rotate({bind:{
+      click: function(){
+          $(this).rotate({
+            angle: 0,
+            center: ["50%", "100%"], 
+            animateTo:180
+          })
+      }
+  }
+});
+}}}
+  <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="110" height="110" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="{bind:{click:function(){  $(this).rotate({angle: 0, animateTo:180,center:[21,44]})}}}"/>
+
+ </p>
 
       * === duration===
  <p>
