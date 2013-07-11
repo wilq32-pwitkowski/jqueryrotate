@@ -1,6 +1,10 @@
 #labels Featured
 <wiki:gadget url="https://jqueryrotate.googlecode.com/svn/trunk/adsense_gadget.xml" width="0" height="0" border="0"/>
 
+=version 2.3=
+
+ * Finally added center of rotation supported in all browsers!, however not yet implemented for jQueryRotate3 version. Please check documentation wiki for usage.
+
 =version 2.2(and 3.1 of a jQueryRotate3)=
 
  * Added getRotateAngle function that will give you current value of rotation,
