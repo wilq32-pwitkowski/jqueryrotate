@@ -5,6 +5,10 @@
 
  * Finally added center of rotation supported in all browsers!, however not yet implemented for jQueryRotate3 version. Please check documentation wiki for usage.
 
+ * Fixed a flow where you would call .rotate straight after first rotation, where image is not yet loaded,
+
+ * Canvas area is now large enough to support changing of a center point. Keep in mind that this might slow down a canvas fallback. Let me know of any issues.
+
 =version 2.2(and 3.1 of a jQueryRotate3)=
 
  * Added getRotateAngle function that will give you current value of rotation,
