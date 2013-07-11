@@ -1,48 +1,92 @@
 <html>
-    <head>
-        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'></script>
-        <script type='text/javascript' src='jQueryRotate.js'></script>
-		<script type='text/javascript' src='http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js'></script>
-        <script type='text/javascript'>
-/*$(document).ready(function() {
-    var rot=$('img').rotate({maxAngle:360,minAngle:0,animatedGif:false,callback: function(){ alert('ok')}})[0].rotateAnimation(120);
-});*/
+  <head>
+    <style type="text/css">
+      #statuses {
+        border: 1px black solid;
+        background: #ddd;
+        color: green;
+      }
+      #statuses .error {
+        color: red; 
+      }
+    </style>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'></script>
+    <script type='text/javascript' src='jQueryRotate.js'></script>
+    <script type='text/javascript'>
 
+    function log(text, error) {
+      
+      $("#statuses").get(0).appendChild(document.createElement("div")).innerHTML = text;
+      if (error) {
+        $("#statuses").get(0).lastChild.className = "error";
+        
+      }
+    }
+    $(document).ready(function()
+    {            
+      var rot=$('.image').rotate({
+          center: ["100%","100%"], 
+          maxAngle:360,
+          minAngle:0,
+          angle:0, 
+          animatedGif:false,
+          callback: function(){ 
+            log('Rotation for image 1 done')
+          }
+      })[0]
+      .rotate({
+          animateTo: 120, 
+          callback: function(){
+            log(this.Wilq32.PhotoEffect._parameters.center[0]);
+          }
+      })
 
-        $(document).ready(function()
-                {            
-//$('#tst').rotate(-5);				
-				/*var rot=$('.image').rotate({//angle:15, easing: $.easing.easeInOutExpo, duration: 5000,
-                    bind:{
-                                "mouseover":function(){ $(this).rotate({animateTo:85});},
-                                "mouseout":function(){$(this).rotate({animateTo:-35});}
-                                }});
-                
-                $("#test").parent("div").find("#test").rotate({animateTo: -360, bind: { "click": function() { $(this).rotate({angle:0, animateTo:-360}); } } });
-*/
-                var func = function(){
-                $("#test").rotate({angle:0, duration: 3000, animateTo:360, callback : func});
-                 setTimeout(function(){
-                     $("#test").stopRotate();
-                     $("#test").rotate({animateTo: 40});
-                     }, 1000);
-                }
-                func();
+      var rot=$('#test3').rotate({
+          angle: 15,
+          easing: $.easing.easeInOutExpo, 
+          duration: 500,
+          bind:{
+            "mouseover":function(){ $(this).rotate({animateTo:85});},
+            "mouseout":function(){$(this).rotate({animateTo:-35});}
+      }});
+    
+      var func = function(){
+        $("#test").rotate({angle:0, duration: 3000, animateTo:360, callback : func});
+        setTimeout(function(){
+          $("#test").stopRotate();
+          $("#test").rotate({animateTo: 40});
+        }, 1000);
+      }
+      func();
 
-                var angle = 0;
-                setInterval(function(){
-                    angle+=3;
-                             $("#test2").rotate(angle);
-                             },50); 
-                });
+      var angle = 0;
+      setInterval(function(){
+        angle+=3;
+        $("#test2").rotate(angle);
+        $("#test4").rotate({
+            angle: angle,
+            center: [300,300]
+        });
+      },50); 
+    });
+    
+  </script>
+</head>
+<body>
+  <div id="tst">
+    <img class="image" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' style='width:150px'/>
+    <img id="test" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' />
+    <img id="test2" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' />
+    <img id="test3" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' />
+    <p> text test lalalalla
+    <img id="test4" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' />
+    test sttestests 
+    </p>
+  </div>
 
-        </script>
-    </head>
-    <body>
-        <div id="tst">	
-        <img class="image" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' style='width:150px'/>
-        <img id="test" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' />
-        <img id="test2" src='http://4.bp.blogspot.com/_9a9gJG-E2Ig/SAsb-ijoBJI/AAAAAAAAAAk/OM7W_4sBAgk/s320/agatka.jpg' />
-    </div>
-    </body>
+  <div id="statuses">
+    Log:
+  
+  </div>
+</body>
 </html>
