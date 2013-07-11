@@ -66,7 +66,9 @@ $("#img").rotate({bind:{
 
       * === center ===
  <p>
-  `[Array]` - An array containing two values - [X, Y]. They define a center of a rotation. Numeric and percentage values are possible ([100,100], or ["50%", "50%"]). Default value is ["50%", "50%"].
+  `[Array]` - An array containing two values - [X, Y]. They define a center of a rotation. Numeric and percentage values are possible ([100,100], or ["50%", "50%"]). Please use values between 0>= x <= imageWidth and 0>= y <= imageHeight (percentage between 0-100%) - this is limitation of already huge canvas area.
+
+Default value is ["50%", "50%"].
 
     Example (click on arrow):
 {{{
