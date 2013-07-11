@@ -9,7 +9,7 @@
 
 = Example 1 =
 Simply rotate an image
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{angle:45}"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="{angle:45}"/>
 {{{
 $("#img").rotate(45);
 }}}
@@ -26,7 +26,7 @@ See live example here: http://jsfiddle.net/RwEme/
 This is simple example that rotates image when user mouseover/mouseout object.
 
    Mouseover arrow to see effect.
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ mouseover:function(){$(this).rotate({animateTo:180})},mouseout:function(){ $(this).rotate({animateTo:0})}} }"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="{bind:{ mouseover:function(){$(this).rotate({animateTo:180})},mouseout:function(){ $(this).rotate({animateTo:0})}} }"/>
 
 {{{
 
@@ -50,7 +50,7 @@ See live example here: http://jsfiddle.net/8LV3p/
 
 Rotate image endlessly
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ angle = 50; setInterval(function(){getImg(); angle+=3;$(img).rotate(angle)  },50); return 0})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="(function(){ angle = 50; setInterval(function(){getImg(); angle+=3;$(img).rotate(angle)  },50); return 0})()"/>
 
 {{{
 var angle = 0;
@@ -64,7 +64,7 @@ See live example here: http://jsfiddle.net/73pXD/
 
 Rotate image endlessly using recursive function
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){getImg(); $(img).rotate({angle:0, animateTo:360,callback: rotation}); };rotation();  return {}})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="(function(){ var rotation = function (){getImg(); $(img).rotate({angle:0, animateTo:360,callback: rotation}); };rotation();  return {}})()"/>
 
 
 {{{
@@ -84,7 +84,7 @@ See live example here: http://jsfiddle.net/YKj5D/
 
 Rotate image endlessly using recursive function and custom easing (similar to example with simple endless rotation)
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="(function(){ var rotation = function (){$(this).rotate({angle:0, animateTo:360,callback: rotation, easing:function(x,t,b,c,d){ return c*(t/d)+b} }); };rotation.call(img);  return {}})()"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="(function(){ var rotation = function (){$(this).rotate({angle:0, animateTo:360,callback: rotation, easing:function(x,t,b,c,d){ return c*(t/d)+b} }); };rotation.call(img);  return {}})()"/>
 
 
 
@@ -112,7 +112,7 @@ Animation rotate using easing from http://gsgd.co.uk/sandbox/jquery/easing/
 
   Click on arrow to see effect.
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ click:function(){ $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })} } }"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="{bind:{ click:function(){ $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })} } }"/>
 
 {{{
 
@@ -134,7 +134,7 @@ Animation shows how to use variables in JavaScript...
 
 Click on arrow to see effect.
 
-<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="http://teeworlds.com/images/dl_arrow.png" up_func="{bind:{ click:function(){ window.value = window.value + 90||90;$(this).rotate({ animateTo:value})} } }"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="{bind:{ click:function(){ window.value = window.value + 90||90;$(this).rotate({ animateTo:value})} } }"/>
 
 {{{
 
