@@ -87,6 +87,8 @@ $("#img").rotate({bind:{
 
  </p>
 
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="110" border="0" up_frm="adv1.html"/>
+
       * === duration===
  <p>
   `[Number]` - default 1000 - Specifies a duration of a animation when using animateTo action
@@ -223,3 +225,4 @@ See live example here: http://jsfiddle.net/xJnqM/
 
 If you're interested in more examples please go here: [Examples]
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="35" border="0" up_frm="adv2.html"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="110" border="0" up_frm="adv1.html"/>
