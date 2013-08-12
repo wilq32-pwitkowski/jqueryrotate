@@ -62,6 +62,8 @@ setInterval(function(){
 
 See live example here: http://jsfiddle.net/73pXD/
 
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="110" border="0" up_frm="adv1.html"/>
+
 Rotate image endlessly using recursive function
 
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/rotate.xml" width="55" height="55" border="0" up_image="https://jqueryrotate.googlecode.com/svn/trunk/arrow.png" up_func="(function(){ var rotation = function (){getImg(); $(img).rotate({angle:0, animateTo:360,callback: rotation}); };rotation();  return {}})()"/>
@@ -152,3 +154,4 @@ $("#img").rotate({
 }}}
 
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="35" border="0" up_frm="adv2.html"/>
+<wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="110" border="0" up_frm="adv1.html"/>
