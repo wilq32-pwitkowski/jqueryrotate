@@ -1,6 +1,8 @@
 #summary Alot of different examples with jsfiddle playground
 #labels Featured
 
+=[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YSU4797QV688J https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif]=
+
 <wiki:gadget url="https://jqueryrotate.googlecode.com/svn/trunk/adsense_gadget.xml" width="0" height="0" border="0"/>
 
 <wiki:gadget url="http://jqueryrotate.googlecode.com/svn/trunk/adv_gadget.xml" width="780" height="35" border="0" up_frm="adv2.html"/>
