@@ -131,7 +131,7 @@ $("#img").rotate({
 });
 }}}
 
-
+Live example here: http://jsfiddle.net/Qtb8Z/
 
 = Example 5 =
 Animation shows how to use variables in JavaScript... 
