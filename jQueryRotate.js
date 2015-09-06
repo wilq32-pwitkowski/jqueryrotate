@@ -108,7 +108,7 @@
 
         this._parameters.step = parameters.step || this._parameters.step || null;
         this._parameters.easing = parameters.easing || this._parameters.easing || this._defaultEasing;
-        this._parameters.duration = parameters.duration || this._parameters.duration || 1000;
+        this._parameters.duration = 'duration' in parameters ? parameters.duration : parameters.duration || this._parameters.duration || 1000;
         this._parameters.callback = parameters.callback || this._parameters.callback || this._emptyFunction;
         this._parameters.center = parameters.center || this._parameters.center || ["50%","50%"];
         if (typeof this._parameters.center[0] == "string") {
