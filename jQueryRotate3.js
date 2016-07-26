@@ -38,7 +38,7 @@ jQuery.fn.extend({
             return returned;
     },
     getRotateAngle: function(){
-        var ret = [];
+        var ret = [0];
         for (var i=0,i0=this.length;i<i0;i++)
             {
                 var element=this.get(i);
