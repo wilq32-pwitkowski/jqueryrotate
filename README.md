@@ -1,3 +1,3 @@
 # jqueryrotate
 
-Take a look at documentation/examples page here: http://beneposto.pl/jqueryrotate/
+Take a look at documentation/examples page here: http://jqueryrotate.com
